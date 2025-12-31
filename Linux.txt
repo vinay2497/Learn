@@ -1,0 +1,618 @@
+ssh-keygen -f daws-86s
+
+firewall == Security Groups
+=========
+incoming and outgoing
+
+inbound and outbound
+
+SSH -> Secure Shell
+Port -> 22
+
+98.80.251.7
+
+ec2-user
+
+ssh -i <private-key> ec2-user@98.80.251.7
+
+ec2 -user
+ec2- user
+
+ls -l -> list the file
+
+ssh-keygen -f daws-86s
+
+ssh -i <private-key> ec2-user@IP
+
+inbound -> SSH 22 0.0.0.0/0
+outbound -> All traffic -> 0.0.0.0/0
+
+C:\Users\siva
+
+GitBash -> Mini Linux
+
+cd /c/devops/daws-86s
+
+/c/devops/daws-86s -> absolute. starts from root directory
+daws-86s  --> relative. make sure you have that file exist file
+
+<command-name> <inputs> <options>
+
+inputs, options are sometime mandatory sometimes optional
+
+copy source destination
+
+uname -> command
+-a -> one of the option
+
+pwd -> print working directory
+$ -> normal user
+# -> root user
+
+/root -> root user home directory
+/home/<user-name> -> /home/ec2-user
+
+/ --> starting path. root path
+
+CRUD -> Create Read Update Delete
+
+touch <file-name> -> create the file
+
+ls -> list subdirectories
+
+cat > file-name
+
+enter the text... press enter and then ctrl+d
+
+> -> redirection
+>> -> don't replace, just add/append
+
+mkdir -> make directory
+rmdir -> deletes the directory
+
+rm -r -> delete recursively, means delete the contents also inside the directory
+
+cd .. -> one step back
+
+Cd != cd
+
+ls -l -> alphabetical order
+ls -lr -> reverse alphabetical order
+ls -lt -> latest on top
+ls -ltr -> oldest on top
+
+cp <source> <destination>
+
+mv <source> <destination> -> moves/cut the file
+. -> represents current directory
+
+grep -> search the text inside file
+
+grep <word-to-search> <file-name>
+
+grep -n -> line number
+grep -c -> count of lines the word occured
+grep -i -> ignore the case
+grep -v -> invert, non matching lines
+
+~/.ssh/config
+config should not have any file extensions
+
+Host *
+    ServerAliveInterval 60
+    ServerAliveCountMax 3
+
+wget <url> -> Downloads the file
+curl <url> -> print the information on the screen
+
+https://raw.githubusercontent.com/daws-86s/notes/refs/heads/main/session-02.txt
+
+printf Hello World
+
+echo "Hello World"
+
+cut command can delimit the text and give us the required fragment
+
+awk -F "/" '{print $1F}'
+
+sudo su - -> I will land into root user home directory
+sudo su -> land into same directory as root
+uname
+pwd
+touch
+cat
+cd
+mkdir
+rmdir
+rm -r
+cp
+mv
+grep
+cut
+awk
+piping
+echo
+ls
+curl
+wget
+
+vim editor
+============
+vi improved editor
+
+touch <file-name>
+cat >
+cat >>
+
+vim <file-name>
+1. if file already exists, it will open
+2. if file does not exists, then it will create and open
+
+Default mode is esc mode.
+
+
+Colon/Command Mode
+=================
+:wq -> write and quit
+:q! -> quit without saving
+:q -> just quit
+:set nu -> display line numbers
+:<line-number> -> cursor will go that line
+:/<word-to-search> -> search from top
+:?<word-to-search> -> search from bottom
+:<line-number>d -> deletes that line
+:noh -> no highlight
+:28s/root/ROOT -> line number 28, replace root with ROOT. It replaces the first occurence in that line
+
+:29s/root/ROOT/g -> g for global. means 29th line all root occurences should be replaced with ROOT
+
+:%s/root/ROOT/g -> all lines all occurences in the file
+
+Esc Mode
+============
+gg --> takes us to top of the file
+shift+g -> takes us to bottom of the file
+u -> undo
+ctrl+r -> redo
+dd -> deletes the line
+yy(yank) -> copies the line
+p -> paste below the line
+shift+p -> paste above the line
+
+head <file-name> -> displays top 10 lines of the file
+tail <file-name> -> displays bottom 10 lines
+
+head -n 8 | tail -n 3
+
+55-65
+
+head -n 65 | tail -n 11
+
+Linux Administration
+======================
+User Management
+
+User Groups Roles Permissions
+
+User -> A human
+Group -> A team of humans
+Roles -> position
+Permissions -> Access to the roles
+
+1. create user
+2. create group
+3. add user to the group
+4. remove user from the group
+5. remove user
+6. remove group
+
+1. create devops group
+2. create suresh user
+3. add suresh to devops group
+4. remove suresh from devops group
+5. remove suresh user
+
+useradd suresh -> creates suresh user
+groupadd devops -> creaes devops group
+
+id <user-name>
+id suresh
+uid=1001(suresh) gid=1001(suresh) groups=1001(suresh)
+
+when you create user in Linux, by default it will create one group with same username
+
+/etc/passwd
+suresh:x:1001:1001::/home/suresh:/bin/bash
+
+/etc/group
+devops:x:1002:
+
+/etc/shadow -> encrypted password
+
+A user in Linux must have 1 primary group and atleast 1 secondary group
+
+usermod -g <group-name> <user-name> --> adding suresh to devops group
+usermod -aG <group-name> <user-name> --> adding suresh to secondary group
+
+passwd <user-name>
+
+/etc/ssh/sshd_config --> SSH configuration
+
+PasswordAuthentication no
+
+vim /etc/ssh/sshd_config
+sshd -t -> checks the syntax of ssh
+
+systemctl restart sshd
+
+gpasswd -d <user-name> <group-name>
+
+id suresh
+suresh suresh suresh
+
+files and permissions
+=====================
+Read    -> 4
+Write   -> 2
+Execute -> 1
+
+-	rw-			r--		r--
+	owner/user	group	others
+	u			   g		o
+	
+chmod g+w 
+chmod 744
+File Ownership
+================
+chmod -> either the owner of the file or root
+chown <user>:<group> file/folder --> not even owner can change the ownership, only root user
+
+chown -R -> recursive. all files and folders inside
+
+How a user can login with keys
+==============================
+/home/suresh/.ssh
+authorized_keys -> suresh public key
+
+ssh -i suresh suresh@IP
+
+An employee should generate keys..
+
+ssh-keygen -f ramesh
+ramesh.pub
+ramesh -> private key
+
+sivakumar should send his public key to admins
+
+1. useradd sivakumar
+2. admin should create .ssh folder in /home/sivakumar
+3. permissions should be 700 for .ssh means only owner has full access
+4. .ssh ownership should be only sivakumar including group
+5. create authorized_keys inside .ssh with max permissions 600 and again ownership should be sivakumar
+6. keep the public file from sivakumar inside authorized_keys
+
+ssh -i sivakumar sivakumar@3.87.244.153
+
+/etc/sudoers -> sudoers information
+vimsudo -> edit safely with syntax checks
+
+How to give sudo access to user?
+
+add him to wheel group and then modify /etc/sudoers wheel group without password
+
+usermod -aG wheel sivakumar
+/etc/sudoers ->
+
+how many ports in a computer -> 0 - 65,535
+
+Delhi -> HYD courier
+
+gandhi apartments, ameerpeta, hyd, 500082
+102
+
+https://facebook.com -> facebook web application
+username and password we can able to see our home feed
+
+protocol -> https (443)
+IP
+
+Package management
+===================
+package managers
+
+dnf is the command to install/remove the packages from server
+previously called as yum
+
+RHEL => dnf install <package-name>
+Ubuntu => apt-get install <package-name>
+
+/etc/yum.repos.d
+
+dnf list installed -> already installed in server
+dnf list available -> not installed but available in web repos
+
+install remove update info
+
+Service Management
+==================
+nginx -> http web server
+systemctl start nginx
+systemctl status nginx
+
+http://3.87.244.153:80
+
+systemctl stop nginx
+systemctl restart nginx
+
+systemctl enable nginx -> whenever system restarted automatically this nginx will run
+systemctl disable nginx
+
+Kumar
+12:32 PM
+Process Management
+==================
+Team Manager
+Team Lead
+Senior Engineer
+Junior Engineer
+Trainees
+
+ls -l -> It will create one process and assign ID, i,e PID and display the result
+
+TL -> Senior Engineer
+TL is his parent for that task, Senior Engineer is Child
+
+TL creates one process and his process ID PPID (Parent process Instance ID)
+TL assigns this to Senior Engineer. PID(Process Instance ID)
+
+PPID 
+
+ps -> lists the process started by current user
+
+ps -ef
+UID          PID    PPID  C STIME TTY          TIME CMD
+root           1       0  0 01:53 ?        00:00:00 /usr/lib/systemd/systemd --switched-root --system --deseria
+root           2       0  0 01:53 ?        00:00:00 [kthreadd]
+root           3       2  0 01:53 ?        00:00:00 [rcu_gp]
+root           4       2  0 01:53 ?        00:00:00 [rcu_par_gp]
+
+1. foreground -> blocks the current screen, will not allow to do anything
+2. background -> 
+
+sleep 10 &
+
+ps -ef | grep nginx
+top -> list all process with their usage of resources
+
+1. High traffic
+10 users, 10% CPU, 25% RAM
+100 users, 20% CPU, 40% RAM
+
+2. Problems in application
+10 users, 20% CPU, 40% RAM
+if a task runs it takes CPU and RAM, if it is completed then it should release CPU and RAM.
+Sometime application will not release these resources, then we need to fix the application
+
+restart
+
+get all the logs, app logs, server logs, etc..
+
+restart the server or application
+
+kill PID -> Request
+kill -9 PID --> force kill(demand)
+
+Network Management
+=====================
+AWS is responsible to provide power, network, etc.
+
+systemctl status nginx
+ps -ef | grep nginx
+
+http://34.228.167.238:80
+
+netstat -ltnp
+
+Linux Hierarchy
+SoftLink, Hardlink, inode
+forward proxy vs reverse proxy
+
+3 tier architecture
+========================
+Desktop vs Web based
+
+Desktop
+==========
+resources usage is more
+Installation, repair and upgrade
+ocassionally hangs
+storage in local, if crashes no recovery
+can't access everywhere
+no data security
+
+Web based
+==========
+
+Road Side hotel -> 1 tier
+===============
+Cooking, money collection, order management
+
+5-10 members
+if 20 members, he can't handle
+
+Hotel -> 2 tier
+===============
+owner issues token
+cook is cooking dosa
+20 members
+	cooking
+	order management
+50 members
+
+Restaurant Model -> 3 tier
+================
+Captain -> welcomes the guest and shows them a table
+Waiter -> taking order, order management
+Chef -> Cooking
+Waiter --> Garnish, and delivers the order
+
+50 members
+
+Dosa Batter -> Cooks into Dosa(Chef) -> Waiter delivers the order
+Raw items -> Eatable format(Chef) -> Waiter
+
+Raw format(SQL or NoSQL) -> Application Servers(Java, Python, .NET, NodeJS, Golang) -> Web Servers -> Load Balncer(Captain)
+
+everything in single server is called as 1 tier application
+Database -> Application and Webserver (2 tier)
+Database -> Application Server -> Webserver and Load Balncer (3 tier)
+
+decoupling or loose coupling
+
+
+Web/Frontend Tier
+=========
+Load Balancing
+Web Server -> nginx -> place web application here
+HTML, CSS and Javascript
+
+Application/Backend/Middleware Server/Tier
+==============
+Java, .NET, Python, C++, Goland, NodeJS
+
+CRUD
+=====
+
+Database Tier
+===============
+Storing the data
+
+MySQL
+Oracle
+MSSQL
+Postgress
+
+MongoDB
+Cassandra
+
+Redis
+
+ActiveMQ
+Websphere MQ
+ps -ef -> list all the process running
+top -> it will display live process with cpu and ram
+
+kill PID -> request to terminate
+kill -9 PID -> order to terminate
+
+netstat -lntp -> shows the ports openend and PID
+
+Database -> Application -> Web -> Load Balancer -> User
+
+CRUD
+======
+1. Create operation
+2. Read operation
+3. Update operation
+4. Delete operation
+
+amazon.in
+
+devops-practice -> AMI(Amazon Machine image)
+
+What is image == image is everything around us
+Image = OS + Some required softwares
+
+Linux is OS or Kernel?
+=======================
+Linus Torwalds -> Linux and Git
+
+Mac -> Hardware + MacOS
+Dell -> Hardware + OS(Optional) -> we have freedom to install any OS
+
+dominating OS for servers was Unix
+Unix -> Hardware+UnixOS
+
+He completely developed a Kernel from the scratch using C language. 
+
+Kernel = a component that connects with Hardware
+OS = Kernel + some utilities or applications for user
+
+Centos, Fedora, Ubuntu, Android, Oracle Suse, Redhat
+
+Redhat Family
+==============
+Opensource vs Enterprise
+
+Opensource -> free and community driven. we need to wait for fix
+Enterprise -> We pay money for support. if there are defects immidiately we get help
+
+Enterprise = Opensource + Support
+
+Redhat = Kernel + Application Utilities + Support
+
+Amazon Linux == Redhat == Centos == Fedora == Almalinux
+
+devops-practice = RHEL based
+
+username=ec2-user 
+Password=DevOps321
+
+34.228.199.227
+
+ssh ec2-user@34.228.199.227
+
+A -> B -> C -> D -> E
+
+A -> Z -> Y -> C -> D -> E
+
+Database
+==============
+Database Server -> it is physical server
+Server == Box == Node
+
+database server software should be installed
+
+RDBMS -> relational database management system
+Excel -> Rows and Columns = Sheets
+RDBMS = Rows and Columns = Tables
+
+There is a relation between tables
+
+MySQL, MSSQL Admin, Oracle Admin,
+3306 -> MySQL port number
+
+default admin username == root
+password needs to setup
+
+mysql_secure_installation --set-root-pass ExpenseApp@1
+
+IP, port, protocol, username and password/key
+
+https
+IP/facebook.com
+username
+password
+443
+
+mysql  -u root -p<password>
+
+-p<password> -> nospace between p and password
+
+mysql -u root -pExpenseApp@1
+
+Database Linux Server -> Database Server Installation -> Schema/databases -> tables -> Data
+
+Application Tier
+================
+dnf module disable nodejs -y -> Disabling default nodejs version
+dnf module enable nodejs:20 -y -> enable especially node js 20
+
+dnf install nodejs -y
+
+dnf is the next version of yum
+
+useradd expense
+system users or service accounts -> non human users
+
+mkdir /app

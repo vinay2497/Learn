@@ -24,7 +24,7 @@ export interface QuizQuestion {
   category: string;
 }
 
-export type Topic = 'git' | 'docker' | 'linux';
+export type Topic = 'git' | 'docker' | 'linux' | 'networking' | 'kubernetes' | 'aws' | 'redis';
 
 export interface TopicData {
   name: string;

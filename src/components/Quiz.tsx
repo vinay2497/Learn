@@ -34,9 +34,9 @@ export default function Quiz({ questions, accentColor }: QuizProps) {
           animate={{ rotate: 360 }}
           transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
         >
-          <Brain className="w-12 h-12" style={{ color: accentColor }} />
+          <Brain className="w-10 h-10 sm:w-12 sm:h-12" style={{ color: accentColor }} />
         </motion.div>
-        <p className="mt-4 text-gray-400">Loading quiz...</p>
+        <p className="mt-4 text-gray-400 text-sm sm:text-base">Loading quiz...</p>
       </div>
     );
   }
@@ -102,10 +102,10 @@ export default function Quiz({ questions, accentColor }: QuizProps) {
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="w-full max-w-2xl mx-auto text-center"
+        className="w-full max-w-2xl mx-auto text-center px-3 sm:px-0"
       >
         <div
-          className="rounded-3xl p-12"
+          className="rounded-2xl sm:rounded-3xl p-6 sm:p-12"
           style={{
             background: `linear-gradient(135deg, ${accentColor}15, ${accentColor}05)`,
             border: `1px solid ${accentColor}30`,
@@ -115,7 +115,7 @@ export default function Quiz({ questions, accentColor }: QuizProps) {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
-            className="text-7xl mb-6"
+            className="text-5xl sm:text-7xl mb-4 sm:mb-6"
           >
             {emoji}
           </motion.div>
@@ -124,7 +124,7 @@ export default function Quiz({ questions, accentColor }: QuizProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="text-4xl font-bold text-white mb-2"
+            className="text-2xl sm:text-4xl font-bold text-white mb-2"
           >
             Quiz Complete!
           </motion.h2>
@@ -133,7 +133,7 @@ export default function Quiz({ questions, accentColor }: QuizProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="text-gray-400 text-lg mb-8"
+            className="text-gray-400 text-sm sm:text-lg mb-6 sm:mb-8"
           >
             {message}
           </motion.p>
@@ -142,22 +142,22 @@ export default function Quiz({ questions, accentColor }: QuizProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="grid grid-cols-3 gap-4 mb-8"
+            className="grid grid-cols-3 gap-2 sm:gap-4 mb-6 sm:mb-8"
           >
-            <div className="bg-gray-800/50 rounded-2xl p-6">
-              <Trophy className="w-8 h-8 mx-auto mb-2" style={{ color: accentColor }} />
-              <div className="text-3xl font-bold text-white">{grade}</div>
-              <div className="text-sm text-gray-400">Grade</div>
+            <div className="bg-gray-800/50 rounded-xl sm:rounded-2xl p-3 sm:p-6">
+              <Trophy className="w-6 h-6 sm:w-8 sm:h-8 mx-auto mb-1 sm:mb-2" style={{ color: accentColor }} />
+              <div className="text-xl sm:text-3xl font-bold text-white">{grade}</div>
+              <div className="text-xs sm:text-sm text-gray-400">Grade</div>
             </div>
-            <div className="bg-gray-800/50 rounded-2xl p-6">
-              <Target className="w-8 h-8 mx-auto mb-2 text-emerald-400" />
-              <div className="text-3xl font-bold text-white">{score}/{shuffledQuestions.length}</div>
-              <div className="text-sm text-gray-400">Score</div>
+            <div className="bg-gray-800/50 rounded-xl sm:rounded-2xl p-3 sm:p-6">
+              <Target className="w-6 h-6 sm:w-8 sm:h-8 mx-auto mb-1 sm:mb-2 text-emerald-400" />
+              <div className="text-xl sm:text-3xl font-bold text-white">{score}/{shuffledQuestions.length}</div>
+              <div className="text-xs sm:text-sm text-gray-400">Score</div>
             </div>
-            <div className="bg-gray-800/50 rounded-2xl p-6">
-              <Zap className="w-8 h-8 mx-auto mb-2 text-yellow-400" />
-              <div className="text-3xl font-bold text-white">{bestStreak}</div>
-              <div className="text-sm text-gray-400">Best Streak</div>
+            <div className="bg-gray-800/50 rounded-xl sm:rounded-2xl p-3 sm:p-6">
+              <Zap className="w-6 h-6 sm:w-8 sm:h-8 mx-auto mb-1 sm:mb-2 text-yellow-400" />
+              <div className="text-xl sm:text-3xl font-bold text-white">{bestStreak}</div>
+              <div className="text-xs sm:text-sm text-gray-400">Streak</div>
             </div>
           </motion.div>
 
@@ -165,9 +165,9 @@ export default function Quiz({ questions, accentColor }: QuizProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
-            className="mb-8"
+            className="mb-6 sm:mb-8"
           >
-            <div className="h-4 bg-gray-800 rounded-full overflow-hidden">
+            <div className="h-3 sm:h-4 bg-gray-800 rounded-full overflow-hidden">
               <motion.div
                 className="h-full rounded-full"
                 style={{ backgroundColor: accentColor }}
@@ -176,7 +176,7 @@ export default function Quiz({ questions, accentColor }: QuizProps) {
                 transition={{ delay: 0.8, duration: 1 }}
               />
             </div>
-            <p className="text-lg mt-2" style={{ color: accentColor }}>
+            <p className="text-base sm:text-lg mt-2" style={{ color: accentColor }}>
               {percentage}% Correct
             </p>
           </motion.div>
@@ -188,10 +188,10 @@ export default function Quiz({ questions, accentColor }: QuizProps) {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleRestart}
-            className="flex items-center gap-2 mx-auto px-8 py-4 rounded-xl text-white font-semibold transition-all"
+            className="flex items-center gap-2 mx-auto px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-white font-semibold transition-all text-sm sm:text-base"
             style={{ backgroundColor: accentColor }}
           >
-            <RotateCcw className="w-5 h-5" />
+            <RotateCcw className="w-4 h-4 sm:w-5 sm:h-5" />
             Try Again
           </motion.button>
         </div>
@@ -200,31 +200,31 @@ export default function Quiz({ questions, accentColor }: QuizProps) {
   }
 
   return (
-    <div className="w-full max-w-2xl mx-auto">
+    <div className="w-full max-w-2xl mx-auto px-3 sm:px-0">
       {/* Header Stats */}
-      <div className="flex justify-between items-center mb-6">
-        <div className="flex items-center gap-4">
-          <span className="text-sm text-gray-400">
-            Question {currentIndex + 1}/{shuffledQuestions.length}
+      <div className="flex justify-between items-center mb-4 sm:mb-6">
+        <div className="flex items-center gap-2 sm:gap-4">
+          <span className="text-xs sm:text-sm text-gray-400">
+            Q {currentIndex + 1}/{shuffledQuestions.length}
           </span>
           {streak > 1 && (
             <motion.span
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
-              className="flex items-center gap-1 px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-400 text-sm"
+              className="flex items-center gap-1 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-yellow-500/20 text-yellow-400 text-xs sm:text-sm"
             >
-              <Zap className="w-4 h-4" />
-              {streak} streak!
+              <Zap className="w-3 h-3 sm:w-4 sm:h-4" />
+              {streak}🔥
             </motion.span>
           )}
         </div>
-        <span className="text-sm text-emerald-400">
+        <span className="text-xs sm:text-sm text-emerald-400">
           Score: {score}
         </span>
       </div>
 
       {/* Progress Bar */}
-      <div className="h-2 bg-gray-800 rounded-full overflow-hidden mb-8">
+      <div className="h-1.5 sm:h-2 bg-gray-800 rounded-full overflow-hidden mb-4 sm:mb-8">
         <motion.div
           className="h-full rounded-full"
           style={{ backgroundColor: accentColor }}
@@ -244,25 +244,25 @@ export default function Quiz({ questions, accentColor }: QuizProps) {
           transition={{ duration: 0.3 }}
         >
           <div
-            className="rounded-2xl p-8 mb-6"
+            className="rounded-xl sm:rounded-2xl p-4 sm:p-8 mb-4 sm:mb-6"
             style={{
               background: `linear-gradient(135deg, ${accentColor}15, ${accentColor}05)`,
               border: `1px solid ${accentColor}30`,
             }}
           >
             <span
-              className="inline-block px-3 py-1 rounded-full text-xs font-medium mb-4"
+              className="inline-block px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium mb-3 sm:mb-4"
               style={{ backgroundColor: `${accentColor}30`, color: accentColor }}
             >
               {currentQuestion.category}
             </span>
-            <h3 className="text-xl font-semibold text-white leading-relaxed">
+            <h3 className="text-base sm:text-xl font-semibold text-white leading-relaxed">
               {currentQuestion.question}
             </h3>
           </div>
 
           {/* Options */}
-          <div className="space-y-3 mb-6">
+          <div className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
             {currentQuestion.options.map((option, index) => {
               const isSelected = selectedAnswer === index;
               const isCorrect = index === currentQuestion.correctAnswer;
@@ -272,11 +272,11 @@ export default function Quiz({ questions, accentColor }: QuizProps) {
               return (
                 <motion.button
                   key={index}
-                  whileHover={!showResult ? { scale: 1.02 } : {}}
-                  whileTap={!showResult ? { scale: 0.98 } : {}}
+                  whileHover={!showResult ? { scale: 1.01 } : {}}
+                  whileTap={!showResult ? { scale: 0.99 } : {}}
                   onClick={() => handleAnswerSelect(index)}
                   disabled={showResult}
-                  className={`w-full p-4 rounded-xl text-left transition-all flex items-center justify-between ${
+                  className={`w-full p-3 sm:p-4 rounded-lg sm:rounded-xl text-left transition-all flex items-center justify-between ${
                     showCorrect
                       ? 'bg-emerald-500/20 border-emerald-500'
                       : showWrong
@@ -290,9 +290,9 @@ export default function Quiz({ questions, accentColor }: QuizProps) {
                     backgroundColor: isSelected && !showResult ? `${accentColor}15` : undefined,
                   }}
                 >
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2 sm:gap-3">
                     <span
-                      className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
+                      className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs sm:text-sm font-medium flex-shrink-0 ${
                         showCorrect
                           ? 'bg-emerald-500 text-white'
                           : showWrong
@@ -307,12 +307,12 @@ export default function Quiz({ questions, accentColor }: QuizProps) {
                     >
                       {String.fromCharCode(65 + index)}
                     </span>
-                    <span className={showCorrect ? 'text-emerald-400' : showWrong ? 'text-red-400' : 'text-gray-200'}>
+                    <span className={`text-sm sm:text-base ${showCorrect ? 'text-emerald-400' : showWrong ? 'text-red-400' : 'text-gray-200'}`}>
                       {option}
                     </span>
                   </div>
-                  {showCorrect && <CheckCircle2 className="w-6 h-6 text-emerald-400" />}
-                  {showWrong && <XCircle className="w-6 h-6 text-red-400" />}
+                  {showCorrect && <CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-400 flex-shrink-0" />}
+                  {showWrong && <XCircle className="w-5 h-5 sm:w-6 sm:h-6 text-red-400 flex-shrink-0" />}
                 </motion.button>
               );
             })}
@@ -325,11 +325,11 @@ export default function Quiz({ questions, accentColor }: QuizProps) {
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
-                className="mb-6 overflow-hidden"
+                className="mb-4 sm:mb-6 overflow-hidden"
               >
-                <div className="p-4 rounded-xl bg-gray-800/50 border border-gray-700">
-                  <p className="text-sm text-gray-400 mb-1">Explanation:</p>
-                  <p className="text-gray-200">{currentQuestion.explanation}</p>
+                <div className="p-3 sm:p-4 rounded-lg sm:rounded-xl bg-gray-800/50 border border-gray-700">
+                  <p className="text-xs sm:text-sm text-gray-400 mb-1">Explanation:</p>
+                  <p className="text-gray-200 text-sm sm:text-base">{currentQuestion.explanation}</p>
                 </div>
               </motion.div>
             )}
@@ -343,7 +343,7 @@ export default function Quiz({ questions, accentColor }: QuizProps) {
                 whileTap={{ scale: 0.95 }}
                 onClick={handleSubmit}
                 disabled={selectedAnswer === null}
-                className={`px-8 py-4 rounded-xl font-semibold transition-all ${
+                className={`px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold transition-all text-sm sm:text-base ${
                   selectedAnswer === null
                     ? 'bg-gray-700 text-gray-500 cursor-not-allowed'
                     : 'text-white'
@@ -359,18 +359,18 @@ export default function Quiz({ questions, accentColor }: QuizProps) {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleNext}
-                className="flex items-center gap-2 px-8 py-4 rounded-xl text-white font-semibold"
+                className="flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-white font-semibold text-sm sm:text-base"
                 style={{ backgroundColor: accentColor }}
               >
                 {currentIndex < shuffledQuestions.length - 1 ? (
                   <>
-                    Next Question
-                    <ArrowRight className="w-5 h-5" />
+                    Next
+                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                   </>
                 ) : (
                   <>
-                    View Results
-                    <Trophy className="w-5 h-5" />
+                    Results
+                    <Trophy className="w-4 h-4 sm:w-5 sm:h-5" />
                   </>
                 )}
               </motion.button>
@@ -381,4 +381,3 @@ export default function Quiz({ questions, accentColor }: QuizProps) {
     </div>
   );
 }
-
